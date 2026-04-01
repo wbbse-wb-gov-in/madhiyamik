@@ -1,0 +1,24 @@
+﻿.custom-contrast {
+    filter: grayscale(1) invert(1);
+}
+
+    .custom-contrast img {
+        filter: invert(1) !important;
+    }
+
+    .custom-contrast li a, .custom-contrast span, .custom-contrast a span, .custom-contrast .wrapper a, .custom-contrast li a span, .custom-contrast p, .custom-contrast p span, .custom-contrast td, .custom-contrast h1, .custom-contrast h2, .custom-contrast h3, .custom-contrast h4, .custom-contrast h5, .custom-contrast h6 {
+        filter: grayscale(0) invert(1);
+        color: #fff !important;
+    }
+
+    .custom-contrast .custom-dropdown-menu {
+        filter: grayscale(0) invert(1);
+        background-color: #555555 !important;
+    }
+    .custom-contrast .custom-dropdown-menu:hover {
+        background-color:#a5a5a5 !important;
+    }
+
+    .custom-contrast .custom-view {
+        filter: grayscale(0) invert(0) !important;
+    }
